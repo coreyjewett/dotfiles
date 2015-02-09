@@ -3,5 +3,7 @@ path=(
   $path
   $HOME/.yadr/bin
   $HOME/.yadr/bin/yadr
+  ./node_modules/.bin:$PATH
+  /usr/local/opt/go/libexec/bin
 )
 
