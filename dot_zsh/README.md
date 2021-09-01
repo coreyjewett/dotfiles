@@ -14,7 +14,7 @@ We've also provided lots of enhancements:
 ## Customizing ZSH with ~/.zsh.after/ and ~/.zsh.before/
 
 If you want to customize your zsh experience, yadr provides two hooks via `~/.zsh.after/` and `~/.zsh.before/` directories.
-In these directories, you can place files to customize things that load before and after other zsh customizations that come from `~/.yadr/zsh/*`
+In these directories, you can place files to customize things that load before and after other zsh customizations that come from `~/.zsh/*`
 
 ## Aliases
 

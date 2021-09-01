@@ -22,7 +22,7 @@ autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 if !exists('g:deoplete#sources#dictionary#dictionaries')
   let g:deoplete#sources#dictionary#dictionaries = {}
 endif
-let g:deoplete#sources#dictionary#dictionaries.javascript = expand('~/.yadr/vim/dict/javascript.dict')
+let g:deoplete#sources#dictionary#dictionaries.javascript = expand('~/.vim/dict/javascript.dict')
 
 " <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>

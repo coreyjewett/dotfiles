@@ -1,0 +1,7 @@
+[user]
+  name = "Corey Jewett"
+{{ if (or (eq .chezmoi.group "APOLLO\\Domain Users") (contains "-dev-backend" .chezmoi.hostname)) }}
+  email = corey.jewett@smartsheet.com
+{{ else }}
+  email = cj@syntheticplayground.com
+{{ end }}

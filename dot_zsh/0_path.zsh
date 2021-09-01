@@ -10,4 +10,4 @@ pathAppend() {
   fi
 }
 
-pathAppend "$HOME/.yadr/bin"
+pathAppend "$HOME/.bin"
