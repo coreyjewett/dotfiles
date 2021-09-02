@@ -1,0 +1,2 @@
+# Try to load linuxbrew if it exists
+test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
