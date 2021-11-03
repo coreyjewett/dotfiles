@@ -4,4 +4,8 @@ source $HOME/.zsh/theme.zsh
 
 for config_file ($HOME/.zsh/*.zsh) source $config_file
 
+if [ -e ~/.smartsheetrc ]; then
+  . ~/.smartsheetrc
+fi
+
 eval "$(starship init zsh)"
