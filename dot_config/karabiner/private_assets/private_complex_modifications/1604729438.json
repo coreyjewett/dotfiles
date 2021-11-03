@@ -1,0 +1,1 @@
+{"title":"Change CapsLock to ESC/LControl (tap/hold)","rules":[{"description":"CapsLock to ESC/LControl (tap/hold)","manipulators":[{"type":"basic","from":{"key_code":"caps_lock","modifiers":{"optional":["any"]}},"to":[{"key_code":"left_control"}],"to_if_alone":[{"key_code":"escape"}]}]}]}
