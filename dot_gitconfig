@@ -50,6 +50,7 @@
 
   # pull
   pl = pull                         # pull
+  ff = pull --ff-only
 
   # push
   ps = push                         # push
