@@ -137,5 +137,7 @@
   line-numbers = true
 [interactive]
   diffFilter = delta --color-only
+[init]
+  defaultBranch = mainline
 [include]
   path = .gitconfig.user
