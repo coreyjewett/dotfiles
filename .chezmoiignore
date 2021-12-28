@@ -1,6 +1,47 @@
+# Local to chezmoi source or machine setup
 README.md
 bootstrap
+.bin/chezmoi
+.bin/smar
 
-{{- if ne .chezmoi.hostname "work-laptop" }}
-.work # only manage .work on work-laptop
-{{- end }}
+# example
+# {{- if ne .chezmoi.hostname "work-laptop" }}
+# .work # only manage .work on work-laptop
+# {{- end }}
+
+# transient junk that shouldn't be managed
+.DS_Store
+**/.DS_Store
+*history
+*_sessions
+**/.*sw?
+*.log
+**/*.log
+.cache
+
+# Shouldn't be managed
+.CFUserTextEncoding
+.Trash
+.ansible
+.anyconnect
+.config/karabiner/automatic_backups
+.cups
+Applications
+Desktop
+Documents
+Downloads
+Library
+Media
+Movies
+Music
+Pictures
+Public
+
+# package manager local-repos
+.cargo
+.gem
+.m2
+.npm
+go
+.volta
+.yarn
