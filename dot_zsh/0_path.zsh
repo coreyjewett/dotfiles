@@ -14,3 +14,4 @@ pathAppend() {
 }
 
 pathAppend "$HOME/.bin"
+pathAppend "$HOME/.emacs.d/bin"
