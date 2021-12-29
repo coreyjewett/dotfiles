@@ -1,6 +1,6 @@
 source $HOME/.zsh/theme.zsh
 
-#source $HOME/.zprezto/runcoms/zshrc
+source $HOME/.zprezto/runcoms/zshrc
 
 for config_file ($HOME/.zsh/*.zsh) source $config_file
 

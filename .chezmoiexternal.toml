@@ -1,0 +1,6 @@
+## TODO: using an old version of zprezto because lfilho was, probably ok to update.
+#[".zprezto"]
+#    type = "archive"
+#    url = "https://github.com/sorin-ionescu/prezto/archive/1f4601e44c989b90dc7314b151891fa60a101251.tar.gz"
+#    exact = true
+#    stripComponents = 1
