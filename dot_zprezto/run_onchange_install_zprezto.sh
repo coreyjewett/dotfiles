@@ -5,7 +5,7 @@ ZPREZTO_DIR="${ZDOTDIR:-$HOME}/.zprezto"
 echo "Installing/Updating zprezto in $ZPREZTO_DIR..."
 
 (
-  if [ ! -e $ZPREZTO_DIR ]; then
+  if [ ! -e $ZPREZTO_DIR/.git ]; then
     git clone --recursive https://github.com/sorin-ionescu/prezto.git $ZPREZTO_DIR
   else
     git pull
