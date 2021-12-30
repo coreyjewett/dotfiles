@@ -1,4 +1,4 @@
 set -o vi
 export EDITOR=nvim
 export VISUAL=nvim
-export MANPAGER="nvim -c 'set ft=man' -"
+#export MANPAGER="nvim -c 'set ft=man' -"
