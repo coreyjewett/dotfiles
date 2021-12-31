@@ -8,6 +8,9 @@ haz() { command -v "$1" &> /dev/null; }
 darwin() { test "$(uname)" = "Darwin";  }
 linux() { test "$(uname)" = "Linux"; }
 
+# Correct Chezmoi repo to ssh version
+chezmoi git remote set-url origin git@github.com:coreyjewett/dotfiles.git
+
 # Try to load linuxbrew, or install brew
 test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 if ! haz brew; then
