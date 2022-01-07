@@ -4,3 +4,9 @@
 #    url = "https://github.com/sorin-ionescu/prezto/archive/1f4601e44c989b90dc7314b151891fa60a101251.tar.gz"
 #    exact = true
 #    stripComponents = 1
+[".emacs.d"]
+    type = "archive"
+    url = "https://github.com/hlissner/doom-emacs/archive/develop.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"

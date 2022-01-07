@@ -1,6 +1,0 @@
-[".emacs.d"]
-    type = "archive"
-    url = "https://github.com/hlissner/doom-emacs/archive/develop.tar.gz"
-    exact = true
-    stripComponents = 1
-    refreshPeriod = "168h"
