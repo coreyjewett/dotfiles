@@ -36,6 +36,14 @@ brew 'tree'
 #brew 'volta'
 brew 'zsh'
 
+# for markdown
+brew proselint
+brew multimarkdown
+brew grip
+
+# for bash lint/static anal
+brew shellcheck
+
 {{ if (eq .chezmoi.os "darwin") }}
 tap 'homebrew/cask'
 tap 'homebrew/cask-fonts'
