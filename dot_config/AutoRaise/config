@@ -1,3 +1,5 @@
 # Note: after changing, run: brew services restart autoraise
 delay=1
 scale=2.5
+warpX=0.4
+warpY=0.35
