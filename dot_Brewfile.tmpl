@@ -1,82 +1,130 @@
-tap 'cantino/mcfly'
-tap 'homebrew/bundle'
-tap 'homebrew/core'
+# Note to self: Could regenerate part of this using: `brew bundle --dump --describe`.
 
-brew 'automake'
-brew 'bat'
-brew 'ctags'
-brew 'fasd'
-brew 'fd'
-brew 'ffmpeg'
-brew 'findutils'
-brew 'fzf'
-brew 'git'
-brew 'git-delta'
-brew 'git-extras'
-brew 'golang'
-brew 'hexyl'
-brew 'imagemagick'
-brew 'jq'
-brew 'lame'
-brew 'mcfly'
-brew 'mosh'
-brew 'neovim'
-brew 'openssl'
-brew 'python3'
-brew 'ranger'
-brew 'readline'
-brew 'ripgrep'
-brew 'scdoc'
-brew 'spaceman-diff'
-brew 'starship'
-brew 'terraform'
-brew 'tidy-html5'
-brew 'tmux'
-brew 'tree'
-#brew 'volta'
-brew 'zsh'
+# Some stuff worth looking at: https://github.com/ragnorc/setup/blob/master/Brewfile
+# renameutils
+# and more
+
+tap "cantino/mcfly"
+tap "homebrew/bundle"
+tap "homebrew/core"
+
+# general tools
+brew "automake"
+brew "bat"
+brew "chezmoi"
+brew "ctags"
+brew "fasd"
+brew "fd"
+brew "ffmpeg"
+brew "findutils"
+brew "fzf"
+brew "gh"
+brew "ghostscript"
+brew "git"
+brew "git-delta"
+brew "git-extras"
+brew "graphviz"
+brew "grep"
+brew "hexyl"
+brew "imagemagick"
+brew "jq"
+brew "lame"
+brew "mcfly"
+brew "mosh"
+brew "ncdu"
+brew "neovim"
+brew "openssl"
+brew "pandoc"
+brew "ranger"
+brew "readline"
+brew "rename"
+brew "renameutils"
+brew "ripgrep"
+brew "scdoc"
+brew "sd"
+brew "spaceman-diff"
+brew "starship"
+brew "tealdeer"
+brew "terraform"
+brew "tidy-html5"
+brew "tmux"
+brew "tree"
+brew "yamllint"
+brew "zsh"
+
+# languages
+brew "golang"
+brew "python3"
+brew "rust"
+brew "volta"
 
 # for markdown
-brew proselint
-brew multimarkdown
-brew grip
+brew "highlight"
+brew "proselint"
+brew "multimarkdown"
+brew "grip"
 
 # for bash lint/static anal
-brew shellcheck
+brew "shellcheck"
+
+# :lang plantuml
+brew "plantuml"
+brew "graphviz"
+
+# :lang rust
+brew "rust-analyzer"
 
 {{ if (eq .chezmoi.os "darwin") }}
-tap 'homebrew/cask'
-tap 'homebrew/cask-fonts'
+brew "mas"
 
-cask 'clipy'
-cask 'font-fira-code'
-brew 'highlight'
-cask 'homebrew/cask-fonts/font-inconsolata-nerd-font'
-cask 'inkscape'
-cask 'iterm2'
-cask 'karabiner-elements'
-cask 'osxfuse'
-cask 'qlmarkdown'
-cask 'vlc'
+tap "homebrew/cask"
+tap "homebrew/cask-fonts"
 
-brew 'coreutils'
-brew 'emacs-mac'
-brew 'gawk'
-brew 'gh'
-brew 'podofo'
-brew 'reattach-to-user-namespace'
-brew 'rename'
-brew 'x264'
-brew 'x265'
-brew 'xvid'
-brew 'youtube-dl'
+brew "d12frosted/emacs-plus/emacs-plus@28", args: ["with-native-comp", "with-imagemagick", "with-dragon-icon"]
 
-#cask 'firefox'
-#cask 'google-chrome'
-#cask 'steam'
-#brew 'ntfs-3g'
+brew "coreutils"
+brew "gawk"
+cask "gimp"
+brew "gnu-tar"
+brew "podofo"
+brew "reattach-to-user-namespace"
+brew "x264"
+brew "x265"
+brew "xvid"
+brew "youtube-dl"
+cask "clipy"
+cask "firefox"
+cask "font-fira-code"
+cask "homebrew/cask-fonts/font-inconsolata-nerd-font"
+cask "inkscape"
+cask "iterm2"
+cask "karabiner-elements"
+cask "nvalt"
+cask "osxfuse"
+cask "qlmarkdown"
+cask "spotify"
+cask "talon"
+cask "vlc"
+
+# TODO: configure these
+tap "koekeishiya/formulae"
+brew "yabai"
+brew "skhd"
+
+# Needs to be started: brew services start autoraise
+tap "dimentium/autoraise"
+brew "autoraise"
+
+#cask "google-chrome"
+#cask "steam"
+#brew "ntfs-3g"
+
+#mas "Be Focused", id: 973134470
+mas "Microsoft Remote Desktop", id: 1295203466
+mas "Sim Daltonism", id: 693112260
+mas "Yubico Authenticator", id: 1497506650
 {{ end }}
 
 {{ if (eq .chezmoi.os "linux") }}
-brew 'emacs'
+brew "emacs"
 {{ end }}
