@@ -30,12 +30,20 @@ $character\
 continuation_prompt = "▶▶"
 
 
-# You can also replace your username with a neat symbol like  to save some space
-# [username]
-# show_always = false
-# style_user = "bg:#{{- index .prompt.colors 0 }}"
-# style_root = "bg:#{{- index .prompt.colors 0 }}"
-# format = '[$user ]($style)'
+[username]
+show_always = false
+style_user = "bg:#{{- index .prompt.colors 0 }}"
+style_root = "bg:#{{- index .prompt.colors 0 }}"
+format = '[$user@]($style)'
+
+[hostname]
+{{- if (or (contains .chezmoi.group "APOLLO\\Domain Users") (contains "-dev-backend" .chezmoi.hostname)) }}
+  trim_at = "-backend"
+{{- else }}
+  trim_at = "."
+{{- end }}
+style = "bg:#{{- index .prompt.colors 0 }}"
+format = '[$hostname]($style)'
 
 [directory]
 style = "bg:#{{- index .prompt.colors 0 }}"
