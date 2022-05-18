@@ -77,37 +77,40 @@ brew "graphviz"
 brew "rust-analyzer"
 
 {{ if (eq .chezmoi.os "darwin") }}
-brew "mas"
-
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
+cask "font-fira-code"
+cask "homebrew/cask-fonts/font-inconsolata-nerd-font"
+cask "homebrew/cask-fonts/font-caskaydia-cove-nerd-font"
 
-brew "d12frosted/emacs-plus/emacs-plus@28", args: ["with-native-comp", "with-imagemagick", "with-dragon-icon"]
+cask "clipy"
+cask "karabiner-elements"
 
 brew "coreutils"
 brew "gawk"
-cask "gimp"
 brew "gnu-tar"
 brew "podofo"
 brew "reattach-to-user-namespace"
+cask "qlmarkdown"
+
+brew "d12frosted/emacs-plus/emacs-plus@28", args: ["with-native-comp", "with-imagemagick", "with-dragon-icon"]
+cask "iterm2"
+
+cask "gimp"
+cask "inkscape"
+
+cask "vlc"
 brew "x264"
 brew "x265"
 brew "xvid"
 brew "youtube-dl"
-cask "clipy"
+
 cask "firefox"
-cask "font-fira-code"
-cask "homebrew/cask-fonts/font-inconsolata-nerd-font"
-cask "homebrew/cask-fonts/font-caskaydia-cove-nerd-font"
-cask "inkscape"
-cask "iterm2"
-cask "karabiner-elements"
 cask "nvalt"
-cask "osxfuse"
-cask "qlmarkdown"
 cask "spotify"
+
 cask "talon"
-cask "vlc"
+cask "plover"
 
 # TODO: configure these
 tap "koekeishiya/formulae"
@@ -121,7 +124,9 @@ brew "autoraise"
 #cask "google-chrome"
 #cask "steam"
 #brew "ntfs-3g"
+#cask "osxfuse"
 
+brew "mas"
 #mas "Be Focused", id: 973134470
 mas "Microsoft Remote Desktop", id: 1295203466
 mas "Sim Daltonism", id: 693112260
