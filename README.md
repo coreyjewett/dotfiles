@@ -16,3 +16,12 @@ Bootstrap should be re-entrant, so just run it again.
 == Upgrading:
 
 Just: `chezmoi upgrade`
+
+== Investigate/Configure:
+
+* [yabai/skhd](https://github.com/koekeishiya)
+* [vimac](https://github.com/dexterleng/vimac/blob/master/docs/manual.md)
+
+* "Expired Apps"
+  + xScope:
+    - alternative: QuickLens
