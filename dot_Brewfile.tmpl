@@ -1,8 +1,6 @@
 # Note to self: Could regenerate part of this using: `brew bundle --dump --describe`.
 
 # Some stuff worth looking at: https://github.com/ragnorc/setup/blob/master/Brewfile
-# renameutils
-# and more
 
 tap "cantino/mcfly"
 tap "mutagen-io/mutagen"
@@ -58,16 +56,17 @@ brew "zsh"
 # languages
 brew "golang"
 brew "python3"
-brew "rust"
+
+# :lang typescript
 brew "volta"
 
-# for markdown
+# :lang markdown
 brew "highlight"
 brew "proselint"
 brew "multimarkdown"
 brew "grip"
 
-# for bash lint/static anal
+# :lang bash lint/static anal
 brew "shellcheck"
 
 # :lang plantuml
@@ -75,32 +74,65 @@ brew "plantuml"
 brew "graphviz"
 
 # :lang rust
+brew "rust"
 brew "rust-analyzer"
 
+###################
+###### Mac Specific
 {{ if (eq .chezmoi.os "darwin") }}
 tap "homebrew/cask"
+
+# fonts, everybody loves fonts
 tap "homebrew/cask-fonts"
 cask "font-fira-code"
 cask "homebrew/cask-fonts/font-inconsolata-nerd-font"
 cask "homebrew/cask-fonts/font-caskaydia-cove-nerd-font"
 
+
+# general usability
 cask "clipy"
 cask "karabiner-elements"
+cask "rectangle"
 
+# Needs to be started: brew services start autoraise
+tap "dimentium/autoraise"
+brew "autoraise"
+
+# TODO: configure these
+tap "koekeishiya/formulae"
+brew "yabai"
+brew "skhd"
+
+# input systems
+cask "talon"
+cask "plover"
+
+# document manipulation / preview
+brew "podofo"
+cask "qlmarkdown"
+cask "skim"
+
+# emacs
+brew "d12frosted/emacs-plus/emacs-plus@28", args: ["with-native-comp", "with-imagemagick", "with-dragon-icon"]
+
+# terminal
+cask "iterm2"
+brew "reattach-to-user-namespace"
 brew "coreutils"
 brew "gawk"
 brew "gnu-tar"
-brew "podofo"
-brew "reattach-to-user-namespace"
-cask "qlmarkdown"
 
-brew "d12frosted/emacs-plus/emacs-plus@28", args: ["with-native-comp", "with-imagemagick", "with-dragon-icon"]
-cask "iterm2"
+# development tools
 brew "insomnia"
 
+# graphics
 cask "gimp"
 cask "inkscape"
 
+# audio / video
+cask "blackhole-2ch"
+cask "blackhole-16ch"
+cask "streamlabs-obs"
 cask "vlc"
 brew "x264"
 brew "x265"
@@ -108,25 +140,16 @@ brew "xvid"
 brew "youtube-dl"
 
 cask "firefox"
-cask "nvalt"
 cask "spotify"
 
-cask "talon"
-cask "plover"
+# Knowledge
+cask "nvalt"
+# with? https://github.com/ryanpcmcquen/obsidian-org-mode
+# brew cask obsidian
+# OR logseq
 
 cask "slack"
 cask "discord"
-
-cask "rectangle"
-
-# TODO: configure these
-tap "koekeishiya/formulae"
-brew "yabai"
-brew "skhd"
-
-# Needs to be started: brew services start autoraise
-tap "dimentium/autoraise"
-brew "autoraise"
 
 #cask "google-chrome"
 #cask "steam"
@@ -136,6 +159,8 @@ brew "autoraise"
 brew "mas"
 
 {{- if (or (contains .chezmoi.group "APOLLO\\Domain Users") (contains "-dev-backend" .chezmoi.hostname)) }}
+cask "finicky"
+
 # Smartsheet apps
 #mas "Be Focused", id: 973134470
 mas "Microsoft Remote Desktop", id: 1295203466
