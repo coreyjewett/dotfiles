@@ -25,9 +25,7 @@
   ca = commit -am                   # commit all with message
   ci = commit                       # commit
   amend = commit --amend            # ammend your last commit
-  amend-noedit = commit --amend --no-edit #amend your last commit reusing last commit's message
-  ammend = commit --amend           # ammend your last commit
-  ammend-noedit = commit --amend --no-edit #amend your last commit reusing last commit's message
+  fixup = commit --amend --no-edit  # amend your last commit reusing last commit's message
 
   # checkout
   co = checkout                     # checkout
