@@ -1,0 +1,175 @@
+{
+  "title": "Deck Commander",
+  "rules": [
+    {
+      "description": "Deck Commander 1 -> Right Hyper 1",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "1"
+          },
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "vendor_id": 32905,
+                  "product_id": 3
+                }
+              ]
+            }
+          ],
+          "to": [
+            {
+              "repeat": false,
+              "modifiers": [
+                "right_alt",
+                "right_gui",
+                "right_control",
+                "right_shift"
+              ],
+              "key_code": "1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Deck Commander 2 -> Right Hyper 2",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "2"
+          },
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "vendor_id": 32905,
+                  "product_id": 3
+                }
+              ]
+            }
+          ],
+          "to": [
+            {
+              "repeat": false,
+              "modifiers": [
+                "right_alt",
+                "right_gui",
+                "right_control",
+                "right_shift"
+              ],
+              "key_code": "2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Deck Commander 3 -> Right Hyper 3",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "3"
+          },
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "vendor_id": 32905,
+                  "product_id": 3
+                }
+              ]
+            }
+          ],
+          "to": [
+            {
+              "repeat": false,
+              "modifiers": [
+                "right_alt",
+                "right_gui",
+                "right_control",
+                "right_shift"
+              ],
+              "key_code": "3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Deck Commander 4 -> Right Hyper 4",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "4"
+          },
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "vendor_id": 32905,
+                  "product_id": 3
+                }
+              ]
+            }
+          ],
+          "to": [
+            {
+              "repeat": false,
+              "modifiers": [
+                "right_alt",
+                "right_gui",
+                "right_control",
+                "right_shift"
+              ],
+              "key_code": "4"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Deck Commander 5 -> Right Hyper 5",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "5"
+          },
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "vendor_id": 32905,
+                  "product_id": 3
+                }
+              ]
+            }
+          ],
+          "to": [
+            {
+              "repeat": false,
+              "modifiers": [
+                "right_alt",
+                "right_gui",
+                "right_control",
+                "right_shift"
+              ],
+              "key_code": "5"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
