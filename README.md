@@ -21,6 +21,10 @@ Just: `chezmoi upgrade`
 
 * [yabai/skhd](https://github.com/koekeishiya)
 * [vimac](https://github.com/dexterleng/vimac/blob/master/docs/manual.md)
+* https://github.com/StanfordSNR/guardian-agent
+* https://wesalvaro.medium.com/switching-from-iterm2-to-kitty-b336c9b1d97c
+* https://ke-complex-modifications.pqrs.org/?q=ultimate%20macOS
+* https://orgmode.org/worg/org-tutorials/index.html
 
 * "Expired Apps"
   + xScope:
