@@ -8,6 +8,8 @@ haz() { command -v "$1" &> /dev/null; }
 darwin() { test "$(uname)" = "Darwin";  }
 linux() { test "$(uname)" = "Linux"; }
 
+export PATH=~/.bin:$PATH
+
 # Correct Chezmoi repo to ssh version
 chezmoi git remote set-url origin git@github.com:coreyjewett/dotfiles.git
 
