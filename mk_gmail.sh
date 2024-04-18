@@ -20,4 +20,5 @@ nativefier() {
 # Google Calendar
 nativefier 'https://mail.google.com/' "GMail" \
 	--internal-urls '.*?mail.google.*?' \
-	--single-instance
+	--strict-internal-urls \
+	--fast-quit --single-instance

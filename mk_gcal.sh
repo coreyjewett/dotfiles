@@ -20,4 +20,4 @@ nativefier() {
 # Google Calendar
 nativefier 'https://calendar.google.com/' "Google Calendar" \
 	--internal-urls '.*?calendar.google.*?' \
-	--single-instance
+	--fast-quit --single-instance
