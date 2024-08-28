@@ -109,8 +109,8 @@
 [core]
   autocrlf = false
   editor = nvim
-  excludesfile = ~/.git/gitignore
-  attributesFile = ~/.git/gitattributes
+  excludesfile = ~/.config/git/ignore
+  attributesFile = ~/.config/git/attributes
 [advice]
   statusHints = false
 [diff]
