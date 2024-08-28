@@ -63,8 +63,24 @@
 ;; accept completion from copilot and fallback to company
 (use-package! copilot
   :hook (prog-mode . copilot-mode)
+  ;; :bind (:map copilot-completion-map
+  ;;             ("<tab>" . 'copilot-accept-completion)
+  ;;             ("TAB" . 'copilot-accept-completion)
+  ;;             ("C-TAB" . 'copilot-accept-completion-by-word)
+  ;;             ("C-<tab>" . 'copilot-accept-completion-by-word)))
+  ;; alternate completions & abort (https://github.com/zerolfx/copilot.el/issues/103)
   :bind (:map copilot-completion-map
-              ("<tab>" . 'copilot-accept-completion)
-              ("TAB" . 'copilot-accept-completion)
-              ("C-TAB" . 'copilot-accept-completion-by-word)
-              ("C-<tab>" . 'copilot-accept-completion-by-word)))
+         ("<right>" . 'copilot-accept-completion)
+         ("C-f" . 'copilot-accept-completion)
+         ("M-<right>" . 'copilot-accept-completion-by-word)
+         ("M-f" . 'copilot-accept-completion-by-word)
+         ("C-e" . 'copilot-accept-completion-by-line)
+         ("<end>" . 'copilot-accept-completion-by-line)
+         ("M-n" . 'copilot-next-completion)
+         ("M-p" . 'copilot-previous-completion)))
+
+(defun cae-copilot-clear-overlay-h ()
+ "Like `copilot-clear-overlay', but returns `t' if the overlay was visible."
+ (when (copilot--overlay-visible)
+  (copilot-clear-overlay) t))
+(add-hook 'doom-escape-hook #'cae-copilot-clear-overlay-h)
