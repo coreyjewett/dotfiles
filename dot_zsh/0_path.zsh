@@ -11,7 +11,7 @@ PATH=$(echo "$PATH" | awk -v RS=':' -v ORS=":" '!a[$1]++{if (NR > 1) printf ORS;
 
 pathAppend() {
   # Only adds to the path if it's not already there
-  if ! echo $PATH | grep -Eq "(^|:)$1($|:)" ; then
+  if ! echo $PATH | egrep -q "(^|:)$1($|:)" ; then
     PATH=$PATH:$1
   fi
 }

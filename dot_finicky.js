@@ -1,4 +1,4 @@
-// Use https://finicky-kickstart.now.sh to generate basic configuration
+ // Use https://finicky-kickstart.now.sh to generate basic configuration
 // Learn more about configuration options: https://github.com/johnste/finicky/wiki/Configuration
 
 // Get Bundle ID: osascript -e 'id of app "SomeApp"'
@@ -23,12 +23,17 @@ module.exports = {
   //   },
   // ],
   handlers: [
-    // Zoom
+    // Zoom Recordings
     {
+      match: ['*.zoom.us/rec/*'],
+      browser: BRAVE,
+    },
+    // Zoom
+/**/    {
       match: ['*.zoom.us/*'],
       browser: '/Applications/zoom.us.app',
     },
-    // Calendar links
+/**/    // Calendar links
     {
       match: ({ opener }) => opener.bundleId === 'com.apple.iCal',
       browser: GCAL,

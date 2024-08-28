@@ -1,5 +1,7 @@
 # Note: after changing, run: brew services restart autoraise
-delay=1
+delay=3
+#focusDelay=5
+mouseDelta=50
 scale=2.5
 warpX=0.4
 warpY=0.35

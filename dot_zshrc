@@ -1,11 +1,34 @@
-source $HOME/.zsh/theme.zsh
+## https://stackoverflow.com/q/8899890
+#setopt prompt_subst
+#PS4=$'+ %D{%s.%6.}\011 '
+#exec 3>&2 2>/tmp/zshstart.$$.log
+#set -x
+#
+## profile zsh startup -- https://blog.jonlu.ca/posts/speeding-up-zsh
+#zmodload zsh/zprof
 
-source $HOME/.zprezto/runcoms/zshrc
 
-for config_file ($HOME/.zsh/*.zsh) source $config_file
+########################## START ###########################
+#source $HOME/.zsh/theme.zsh
+
+#source $HOME/.zprezto/runcoms/zshrc
+
+#for config_file ($HOME/.zsh/*.zsh) source $config_file
 
 if [ -e ~/.smartsheetrc ]; then
   . ~/.smartsheetrc
+  for sh in ~/.file-system-rc/*sh; source $sh
 fi
 
+
 eval "$(starship init zsh)"
+
+########################### END ###########################
+
+
+## dump profile data
+#zprof
+#
+## disable PS4 profiling
+#set +x
+#exec 2>&3 3>&-
