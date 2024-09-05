@@ -13,15 +13,6 @@ export PATH=~/.bin:$PATH
 # Correct Chezmoi repo to ssh version
 chezmoi git remote set-url origin git@github.com:coreyjewett/dotfiles.git
 
-# Try to load linuxbrew, or install brew
-test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-if ! haz brew; then
-    /bin/bash -c "export CI=1; $(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-fi
-
-# install Brewfile goodness
-brew bundle install --file=~/.Brewfile
 
 # seems like there may be a catch-22 here
 touch ~/.zsh_history
@@ -38,3 +29,16 @@ if ! haz ijq; then
     popd
     rm -rf $TMPDIR
 fi
+
+
+# LINUXBREW IS NOT THE ANSWER
+if linux; exit 0;
+
+# Try to load linuxbrew, or install brew
+if ! haz brew; then
+    /bin/bash -c "export CI=1; $(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+fi
+
+# install Brewfile goodness
+brew bundle install --file=~/.Brewfile

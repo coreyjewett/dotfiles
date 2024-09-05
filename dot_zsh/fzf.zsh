@@ -1,7 +1,5 @@
-# Darwin brew path
-BREW_OPT=/home/linuxbrew/.linuxbrew/opt;
-
-if [ ! -e $BREW_OPT ]; then
+if [ -z "${BREW_OPT:-}" -o ! -e ${BREW_OPT} ]; then
+  # Darwin brew path
   BREW_OPT=/usr/local/opt;
 fi
 
