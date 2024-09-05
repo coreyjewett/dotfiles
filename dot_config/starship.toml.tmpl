@@ -76,12 +76,14 @@ format = '[[($all_status$ahead_behind )](bg:#{{- index .prompt.colors 1 }})]($st
 [java]
 symbol = ""
 style = "bg:#{{- index .prompt.colors 2 }}"
-format = '[[ $symbol ($version) ](bg:#{{- index .prompt.colors 2 }})]($style)'
+#format = '[[ $symbol ($version) ](bg:#{{- index .prompt.colors 2 }})]($style)'
+format = '[[ $symbol ](bg:#{{- index .prompt.colors 2 }})]($style)'
 
 [nodejs]
 symbol = ""
 style = "bg:#{{- index .prompt.colors 2 }}"
-format = '[[ $symbol ($version) ](bg:#{{- index .prompt.colors 2 }})]($style)'
+#format = '[[ $symbol ($version) ](bg:#{{- index .prompt.colors 2 }})]($style)'
+format = '[[ $symbol ](bg:#{{- index .prompt.colors 2 }})]($style)'
 
 [rust]
 symbol = ""
