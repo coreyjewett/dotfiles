@@ -1,34 +1,48 @@
-## https://stackoverflow.com/q/8899890
+### https://stackoverflow.com/q/8899890
 #setopt prompt_subst
 #PS4=$'+ %D{%s.%6.}\011 '
 #exec 3>&2 2>/tmp/zshstart.$$.log
 #set -x
-#
+
 ## profile zsh startup -- https://blog.jonlu.ca/posts/speeding-up-zsh
 #zmodload zsh/zprof
 
-
+zshrc_timings=(`date "+%s%3N"`)
+function time_click() { zshrc_timed+=($@); zshrc_timings+=(`date "+%s%3N"`); }
 ########################## START ###########################
 #source $HOME/.zsh/theme.zsh
 
-#source $HOME/.zprezto/runcoms/zshrc
+source $HOME/.zprezto/runcoms/zshrc
+time_click prezto;
 
-#for config_file ($HOME/.zsh/*.zsh) source $config_file
+for config_file ($HOME/.zsh/*.zsh); source $config_file
+time_click dot_zsh;
 
+# mise - installed by nix
+eval "$(mise activate zsh)"
+time_click mise;
+
+# load Smartsheet stuff
 if [ -e ~/.smartsheetrc ]; then
-  . ~/.smartsheetrc
+  source ~/.smartsheetrc
   for sh in ~/.file-system-rc/*sh; source $sh
 fi
+time_click smar;
 
-
+# take me to the stars
 eval "$(starship init zsh)"
-
+time_click starship;
 ########################### END ###########################
 
+echo -n "Startup ms: "
+for ((i=0; i<=${#zshrc_timed[@]}; i++)); echo -n "${zshrc_timed[i]}\t";
+echo; echo -n "\t\t"
+for ((i=2; i<=${#zshrc_timings[@]}; i++)); echo -n "$((zshrc_timings[i] - zshrc_timings[i-1]))\t";
+unset zshrc_timings zshrc_timed;
 
 ## dump profile data
 #zprof
 #
-## disable PS4 profiling
+### disable PS4 profiling
 #set +x
 #exec 2>&3 3>&-
