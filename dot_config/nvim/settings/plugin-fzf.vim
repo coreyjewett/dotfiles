@@ -1,6 +1,6 @@
 " MAPPINGS:
 " Mnemonic: *F*ind *F*iles (file name)
-nnoremap <leader>ff :Files<CR>
+nnoremap <leader>ff :GFiles<CR>
 " Mnemonic: *F*ind *B*uffers
 nnoremap <leader>fb :Buffers<CR>
 " Mnemonic: *F*ind by *G*reping (file contents)
