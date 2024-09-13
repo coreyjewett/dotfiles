@@ -1,7 +1,7 @@
 let g:lightline = {
    \ 'mode_map': { 'c': 'NORMAL' },
    \ 'active': {
-   \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
+   \   'left': [ [ 'mode', 'paste' ], [ 'cocstatus', 'fugitive', 'filename' ] ]
    \ },
    \ 'component_function': {
    \   'modified': 'MyModified',
@@ -12,10 +12,13 @@ let g:lightline = {
    \   'filetype': 'MyFiletype',
    \   'fileencoding': 'MyFileencoding',
    \   'mode': 'MyMode',
+   \   'cocstatus': 'coc#status',
    \ },
    \ 'separator': { 'left': '', 'right': '' },
    \ 'subseparator': { 'left': '', 'right': '' }
 \ }
+
+autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
 function! MyModified()
   return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
@@ -28,15 +31,14 @@ endfunction
 function! MyFilename()
   return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
         \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
-        \  &ft == 'denite' ? denite#get_status('sources') :
         \  &ft == 'vimshell' ? vimshell#get_status_string() :
         \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
         \ ('' != MyModified() ? ' ' . MyModified() : '')
 endfunction
 
 function! MyFugitive()
-  if &ft !~? 'vimfiler\|gundo' && exists("*fugitive#head")
-    let _ = fugitive#head()
+  if &ft !~? 'vimfiler\|gundo' && exists("*FugitiveHead")
+    let _ = FugitiveHead()
     return strlen(_) ? ' '._ : ''
   endif
   return ''
@@ -58,11 +60,5 @@ function! MyFileencoding()
 endfunction
 
 function! MyMode()
-  if &ft == 'denite'
-    let mode_str = substitute(denite#get_status('sources'), "-\\| ", "", "g")
-    call lightline#link(tolower(mode_str[0]))
-    return mode_str
-  else
-    return winwidth('.') > 60 ? lightline#mode() : ''
-  endif
+  return winwidth('.') > 60 ? lightline#mode() : ''
 endfunction

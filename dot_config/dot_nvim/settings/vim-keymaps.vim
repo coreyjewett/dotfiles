@@ -36,7 +36,7 @@ imap <C-a> <esc>wa
 
 " copy current filename into system clipboard
 " this is helpful to paste someone the path you're looking at
-" Mnemonic: (c)urrent (f)ull filename (Eg.: ~/.nvim/settings/vim-keymaps.vim)
+" Mnemonic: (c)urrent (f)ull filename (Eg.: ~/.yadr/nvim/settings/vim-keymaps.vim)
 nnoremap <silent> <leader>cf :let @* = expand("%:~")<CR>
 " Mnemonic: (c)urrent (r)elative filename (Eg.: nvim/settings/vim-keymaps.vim)
 nnoremap <silent> <leader>cr :let @* = expand("%")<CR>
@@ -67,3 +67,6 @@ map <leader>hi :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> 
 if has('macos')
   map <silent> <leader>hp :!open -a Safari %<CR><CR>
 endif
+
+" Switch buffers with Backspace key instead of C-^
+nnoremap <Backspace> <C-^>
