@@ -11,6 +11,11 @@ let g:surround_35  = "#{\r}"   " #
 let g:surround_45 = "<% \r %>"    " -
 let g:surround_61 = "<%= \r %>"   " =
 
+" Define custom surround mapping for sh interpolations on $
+augroup ShellScriptSurround
+  autocmd!
+  autocmd FileType sh let b:surround_{char2nr('$')} = '${\r}'
+augroup END
 
 """""""""""
 " ,# Surround a word with #{ruby interpolation}

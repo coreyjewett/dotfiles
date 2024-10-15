@@ -11,7 +11,14 @@
 #     exact = true
 #     stripComponents = 1
 #     refreshPeriod = "168h"
+[".zsh/fzf-git.zsh"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/junegunn/fzf-git.sh/main/fzf-git.sh"
+    refreshPeriod = "168h"
 [".emacs.d"]
-    type = "git-repo"
-    #url = "https://github.com/hlissner/doom-emacs"
-    url = "https://github.com/doomemacs/doomemacs"
+  type = "git-repo"
+  #url = "https://github.com/hlissner/doom-emacs"
+  url = "https://github.com/doomemacs/doomemacs"
+[".setup"]
+  type = "git-repo"
+  url = "https://github.com/coreyjewett/nix-config.git"
