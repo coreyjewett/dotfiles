@@ -7,6 +7,8 @@
   local = yellow
   remote = green
 [alias]
+  # TODO Might be some more here: https://github.com/sorin-ionescu/prezto/blob/master/modules/git/alias.zsh
+
   # add
   a = add                           # add
   chunkyadd = add --patch           # stage commits chunk by chunk
@@ -41,6 +43,11 @@
 
   # log
   l = log --graph --date=short
+  l3 = log --graph --date=short -n3
+  l5 = log --graph --date=short -n5
+  l10 = log --graph --date=short -n10
+  l20 = log --graph --date=short -n20
+
   changes = log --pretty=format:\"%h %cr %cn %Cgreen%s%Creset\" --name-status
   short = log --pretty=format:\"%h %cr %cn %Cgreen%s%Creset\"
   simple = log --pretty=format:\" * %s\"
