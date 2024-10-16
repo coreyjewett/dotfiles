@@ -1,7 +1,10 @@
 #!/bin/sh
 
-if [ ! -f "/Users/cjewett/.config/chezmoi/key.txt" ]; then
-    mkdir -p "/Users/cjewett/.config/chezmoi"
-    chezmoi age decrypt --output "/Users/cjewett/.config/chezmoi/key.txt" --passphrase "{{ .chezmoi.sourceDir }}/key.txt.age"
-    chmod 600 "/Users/cjewett/.config/chezmoi/key.txt"
+KEY_TXT="${HOME}/.config/chezmoi/key.txt"
+
+if [ ! -f "$KEY_TXT" ]; then
+    mkdir -p "$(dirname $KEY_TXT)"
+    #chezmoi age decrypt --output "${HOME}/.config/chezmoi/key.txt" --passphrase "{{ .chezmoi.sourceDir }}/key.txt.age"
+    op read 'op://Private/dotconfig_chezmoi/key.txt?attribute=content' > "$KEY_TXT"
+    chmod 600 $KEY_TXT
 fi
