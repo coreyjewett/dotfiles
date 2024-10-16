@@ -159,7 +159,7 @@ cask "discord"
 
 brew "mas"
 
-{{- if (or (contains .chezmoi.group "APOLLO\\Domain Users") (contains "-dev-backend" .chezmoi.hostname)) }}
+{{- if (contains .chezmoi.username "cjewett") }}
 cask "finicky"
 
 # Smartsheet apps

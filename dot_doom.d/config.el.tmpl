@@ -7,7 +7,7 @@
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
 (setq user-full-name "Corey Jewett"
-{{- if (or (contains .chezmoi.group "APOLLO\\Domain Users") (contains "-dev-backend" .chezmoi.hostname)) }}
+{{- if (contains .chezmoi.username "cjewett") }}
       user-mail-address "corey.jewett@smartsheet.com")
 {{- else }}
       user-mail-address "cj@syntheticplayground.com")

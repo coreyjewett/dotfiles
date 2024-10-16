@@ -37,7 +37,7 @@ style_root = "bg:#{{- index .prompt.colors 0 }}"
 format = '[$user@]($style)'
 
 [hostname]
-{{- if (or (contains .chezmoi.group "APOLLO\\Domain Users") (contains "-dev-backend" .chezmoi.hostname)) }}
+{{- if (contains .chezmoi.username "cjewett") }}
   trim_at = "-backend"
 {{- else }}
   trim_at = "."
