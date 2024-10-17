@@ -79,6 +79,26 @@ bindkey -v
 # Extend PATH.
 path=(~/.bin $path)
 
+######################### SSH
+# 1pass on a Mac
+_1pass="${HOME}/Library/Group Containers/2BUA8C4S2C.com.1password";
+_1pass_sock="${_1pass}/t/agent.sock";
+
+if [[ -e "${_1pass}" ]]; then  # 1pass installed?
+  if [[ -e "${_1pass_sock}" ]]; then  # is 1pass ssh agent enabled?
+    export SSH_AUTH_SOCK="${_1pass_sock}";
+  else
+    echo "WARN: 1Password found, but SSH Agent isn't enabled." >&2;
+  fi
+# try symlinking the socket to a fixed location instead
+# https://gist.github.com/martijnvermaat/8070533?permalink_comment_id=4621458#gistcomment-4621458
+elif [[ -n "$SSH_AUTH_SOCK" ]]; then
+  # if $SSH_AUTH_SOCK is a socket, replace .ssh/.auth_sock with a new symlink pointing to it
+  [[ -S "$SSH_AUTH_SOCK" ]] && ln -snf "$SSH_AUTH_SOCK" ${HOME}/.ssh/.auth_sock
+fi
+unset _1pass _1pass_sock
+######################### /SSH
+
 # Export environment variables.
 export GPG_TTY=$TTY
 
