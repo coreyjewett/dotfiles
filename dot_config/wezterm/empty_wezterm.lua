@@ -7,5 +7,7 @@ local config = wezterm.config_builder()
 -- disable ligatures
 config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
 
+config.font = wezterm.font("MesloLGS Nerd Font")
+
 -- and finally, return the configuration to wezterm
 return config
