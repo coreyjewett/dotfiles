@@ -137,6 +137,12 @@ alias tree='tree -a -I .git'
 alias ls="${aliases[ls]:-ls} -A"
 
 alias g=git
+alias ga='git a'
+alias gs='git s'
+alias gd='git d'
+alias gc='git c'
+alias gca='git ca'
+alias gfup='git fixup'
 
 # Set shell options: http://zsh.sourceforge.net/Doc/Release/Options.html.
 #setopt glob_dots     # no special treatment for file names with a leading dot
