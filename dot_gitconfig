@@ -28,6 +28,7 @@
   ci = commit                       # commit
   amend = commit --amend            # ammend your last commit
   fixup = commit --amend --no-edit  # amend your last commit reusing last commit's message
+  fup = commit --amend --no-edit    # amend your last commit reusing last commit's message
 
   # checkout
   co = checkout                     # checkout
@@ -38,7 +39,7 @@
 
   # diff
   d = diff                          # diff unstaged changes
-  dc = diff --cached                # diff staged changes
+  ds = diff --cached                # diff staged changes
   last = diff HEAD^                 # diff last committed change
 
   # log
@@ -58,7 +59,7 @@
   ff = pull --ff-only
 
   # push
-  ps = push                         # push
+  pu = push                         # push
   please = push --force-with-lease
 
   # rebase
@@ -82,16 +83,16 @@
 
   # status
   s = status                        # status
-  st = status                       # status
-  stat = status                     # status
+  ; st = status                       # status
+  ; stat = status                     # status
 
   # tag
   t = tag -n                        # show tags with <n> lines of each tag message
 
   # svn helpers
-  svnr = svn rebase
-  svnd = svn dcommit
-  svnl = svn log --oneline --show-commit
+  ; svnr = svn rebase
+  ; svnd = svn dcommit
+  ; svnl = svn log --oneline --show-commit
 [format]
   pretty = format:%C(blue)%ad%Creset %C(yellow)%h%C(green)%d%Creset %C(blue)%s %C(magenta) [%an]%Creset
 [mergetool]
@@ -149,3 +150,5 @@
   defaultBranch = mainline
 [include]
   path = .gitconfig.user
+[piece]
+	branch-prefix = personal/cjewett/

@@ -27,7 +27,11 @@ zstyle ':z4h:' term-shell-integration 'yes'
 zstyle ':z4h:autosuggestions' forward-char 'accept'
 
 # Recursively traverse directories when TAB-completing files.
-zstyle ':z4h:fzf-complete' recurse-dirs 'no'
+zstyle ':z4h:fzf-complete' recurse-dirs 'yes'
+# Rebind Tab in fzf from up to repeat.
+zstyle ':z4h:fzf-complete' fzf-bindings tab:repeat
+# Please no node_modules in completions. (https://github.com/romkatv/zsh4humans/issues/235)
+zstyle ':z4h:fzf-complete' find-flags '(' -name '.*' -o -name node_modules ')' -prune -print -o -print
 
 # Enable direnv to automatically source .envrc files.
 zstyle ':z4h:direnv'         enable 'yes'
@@ -137,12 +141,10 @@ alias tree='tree -a -I .git'
 alias ls="${aliases[ls]:-ls} -A"
 
 alias g=git
-alias ga='git a'
-alias gs='git s'
-alias gd='git d'
-alias gc='git c'
-alias gca='git ca'
-alias gfup='git fixup'
+# re-alias all aliases from gitconfig
+for ali in $(git config --get-regexp '^alias\.' | cut -d\  -f1 | sed -e 's/^alias.//'); do
+  alias g$ali='git '$ali;
+done
 
 # Set shell options: http://zsh.sourceforge.net/Doc/Release/Options.html.
 #setopt glob_dots     # no special treatment for file names with a leading dot
