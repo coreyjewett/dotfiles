@@ -141,10 +141,23 @@ alias tree='tree -a -I .git'
 alias ls="${aliases[ls]:-ls} -A"
 
 alias g=git
-# re-alias all aliases from gitconfig
-for ali in $(git config --get-regexp '^alias\.' | cut -d\  -f1 | sed -e 's/^alias.//'); do
-  alias g$ali='git '$ali;
+## directly alias most git aliases from the gitconfig so we don't need the awkward 'g <alias>'.
+# get all the short alias strings and split the output into an array by newline termination
+for fullali in ${(f)"$(git config --get-regexp '^alias\.' | grep -E '^alias\..{1,3} ')"}; do
+    [[ ${fullali} =~ 'alias\.([^ ]+) (.+)' ]];
+    # # grab just the alias (after the "." and before first space)
+    local ali=${match[1]};
+    # # and everything after the first space
+    local cmd=${match[2]};
+
+    # Don't try this when ! is part of the alias command
+    if [[ ! ${fullali} =~ '!' ]]; then
+        alias "g${ali}"="git ${cmd}";
+        #continue;
+    fi
+    #alias g$ali='git '$ali;
 done
+unset fullali ali cmd;
 
 # Set shell options: http://zsh.sourceforge.net/Doc/Release/Options.html.
 #setopt glob_dots     # no special treatment for file names with a leading dot
