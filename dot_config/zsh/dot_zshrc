@@ -164,6 +164,10 @@ alias tree='tree -a -I .git'
 # Add flags to existing aliases.
 alias ls="${aliases[ls]:-ls} -A"
 
+alias cz="chezmoi"
+alias czcd="exec chezmoi cd"
+alias cze="chezmoi edit -a"
+
 alias g=git
 ## directly alias most git aliases from the gitconfig so we don't need the awkward 'g <alias>'.
 # get all the short alias strings and split the output into an array by newline termination
