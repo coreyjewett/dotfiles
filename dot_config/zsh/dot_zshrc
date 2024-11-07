@@ -80,9 +80,32 @@ bindkey -v
   bindkey   '^N'    z4h-down-substring-local       # ctrl+n
   bindkey   '^[[B'  z4h-down-substring-local       # down
 
-# Extend PATH.
+### Extend PATH.
+# vanilla PATH adds
 path=(~/.bin $path)
 path=(~/.yarn/bin $path)
+
+# Add all node_modules/.bin directories in the current or any parent directory to PATH
+add_all_node_modules_bins_to_path() {
+  local dir=$(pwd)
+  local paths=()
+  while [ "$dir" != "/" ]; do
+    if [ -d "$dir/node_modules/.bin" ]; then
+      paths+=("$dir/node_modules/.bin")
+    fi
+    dir=$(dirname "$dir")
+  done
+  if [ ${#paths[@]} -gt 0 ]; then
+    export PATH="$(IFS=:; echo "${paths[*]}"):$PATH"
+  fi
+}
+
+# Call the function whenever the directory changes
+autoload -U add-zsh-hook
+add-zsh-hook chpwd add_all_node_modules_bins_to_path
+
+# Also call it for the current directory
+add_all_node_modules_bins_to_path
 
 ######################### SSH
 # 1pass on a Mac
