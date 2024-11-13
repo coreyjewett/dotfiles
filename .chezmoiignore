@@ -45,3 +45,6 @@ Public
 go
 .volta
 .yarn
+
+# artifact of installing SketchyBar Lua
+.local/share/sketchybar_lua

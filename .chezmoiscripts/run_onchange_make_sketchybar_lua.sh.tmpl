@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+
+{{ if eq .chezmoi.os "darwin" -}}
+# {{ output "git" "-C" (joinPath .chezmoi.homeDir ".local" "src" "sketchybar_lua") "rev-parse" "HEAD" }}
+cd {{ (joinPath .chezmoi.homeDir ".local" "src" "sketchybar_lua") }}
+make install
+{{ end -}}
+
