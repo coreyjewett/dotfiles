@@ -7,8 +7,8 @@
 # see this wiki page for information:
 #  - https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)#configure-scripting-addition
 #
-yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
-sudo yabai --load-sa
+# yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+# sudo yabai --load-sa
 #
 
 # global settings
@@ -32,16 +32,19 @@ yabai -m config                                 \
     split_ratio                  0.50           \
     split_type                   auto           \
     auto_balance                 off            \
-    top_padding                  05             \
-    bottom_padding               05             \
-    left_padding                 05             \
-    right_padding                05             \
-    window_gap                   05             \
+    top_padding                  06             \
+    bottom_padding               06             \
+    left_padding                 06             \
+    right_padding                06             \
+    window_gap                   08             \
     layout                       bsp            \
     mouse_modifier               cmd            \
     mouse_action2                move           \
     mouse_drop_action            swap
     #mouse_action1                resize         \
+
+# don't manage some apps
+yabai -m rule --add app="^(System Settings|Calculator|Finder|1Password)$" sticky=on manage=off sub-layer=normal
 
 # Clean up empty spaces with no windows on them.
 #yabai -m signal --add event=space_changed action="sh ~/.local/state/swabai/cleanEmptySpaces.sh"
