@@ -22,3 +22,10 @@
 [".setup"]
   type = "git-repo"
   url = "https://github.com/coreyjewett/nix-config.git"
+[".local/src/sketchybar_lua"]
+  type = "git-repo"
+  url = "https://github.com/FelixKratz/SbarLua.git"
+["Library/Fonts/sketchybar-app-font.ttf"]
+    type = "file"
+    url = "https://github.com/kvndrsslr/sketchybar-app-font/releases/download/latest/sketchybar-app-font.ttf"
+    refreshPeriod = "168h"
