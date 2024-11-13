@@ -160,6 +160,7 @@ compdef _directories md
 
 # Define aliases.
 alias tree='tree -a -I .git'
+alias rmrf='rm -rf'
 
 # Add flags to existing aliases.
 alias ls="${aliases[ls]:-ls} -A"
