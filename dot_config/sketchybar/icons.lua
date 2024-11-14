@@ -47,6 +47,7 @@ local icons = {
     plus = "",
     loading = "",
     apple = "",
+    gitlab = "",
     gear = "",
     cpu = "",
     clipboard = "Missing Icon",
