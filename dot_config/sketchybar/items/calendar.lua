@@ -43,6 +43,19 @@ sbar.add("bracket", { cal.name }, {
 -- Padding item required because of bracket
 sbar.add("item", { position = "right", width = settings.group_paddings })
 
+local function get_day_suffix(day)
+    if day == 1 or day == 21 or day == 31 then
+        return "st"
+    elseif day == 2 or day == 22 then
+        return "nd"
+    elseif day == 3 or day == 23 then
+        return "rd"
+    else
+        return "th"
+    end
+end
+
 cal:subscribe({ "forced", "routine", "system_woke" }, function(env)
-  cal:set({ icon = os.date("%a. %d %b."), label = os.date("%H:%M") })
+  local day = os.date("%d")
+  cal:set({ icon = day .. get_day_suffix(day), label = os.date("%H:%M") })
 end)
