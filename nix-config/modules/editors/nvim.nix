@@ -634,24 +634,24 @@ in
           indent.enable = true;
           highlight_definitions.enable = true;
 
-          refactor = {
-            enable = true;
-            smart_rename = {
-              enable = true;
-              keymaps = {
-                smartRename = "<leader>rn";
-              };
-            };
-            navigation = {
-              enable = true;
-              keymaps = {
-                goto_definition = "gd";
-                list_definitions = "gD";
-                list_definitions_toc = "gO";
-                goto_next_usage = "<a-*>";
-                goto_previous_usage = "<a-#>";
-              };
-            };
+        };
+      };
+      treesitter-refactor = {
+        enable = true;
+        smartRename = {
+          enable = true;
+          keymaps = {
+            smartRename = "<leader>rn";
+          };
+        };
+        navigation = {
+          enable = true;
+          keymaps = {
+            gotoDefinition = "gd";
+            listDefinitions = "gD";
+            listDefinitionsToc = "gO";
+            gotoNextUsage = "<a-*>";
+            gotoPreviousUsage = "<a-#>";
           };
         };
       };
@@ -805,7 +805,6 @@ in
             }
             {
               __unkeyed-1 = "<leader>f";
-
               desc = "Find";
             }
             {
@@ -815,6 +814,10 @@ in
             {
               __unkeyed-1 = "<leader>s";
               desc = "Split Window";
+            }
+            {
+              __unkeyed-1 = "<leader>rn";
+              desc = "Rename (Smart)";
             }
           ];
         };
