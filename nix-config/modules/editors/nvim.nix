@@ -226,12 +226,12 @@ in
         action = "<CMD>lua vim.diagnostic.open_float()<CR>";
         options.desc = "Show LSP diagnostic in floating window";
       }
-      {
-        mode = "n";
-        key = "<leader>r";
-        action = ":! ";
-        options.desc = "Run command";
-      }
+      # {
+      #   mode = "n";
+      #   key = "<leader>r";
+      #   action = ":! ";
+      #   options.desc = "Run command";
+      # }
       {
         mode = "n";
         key = "<TAB>";
@@ -309,9 +309,9 @@ in
         key = "f";
         action.__raw = ''
           function()
-            require'hop'.hint_char1({
+            require'hop'.hint_char2({
               direction = require'hop.hint'.HintDirection.AFTER_CURSOR,
-              current_line_only = true
+              current_line_only = false
             })
           end
         '';
@@ -321,9 +321,9 @@ in
         key = "F";
         action.__raw = ''
           function()
-            require'hop'.hint_char1({
+            require'hop'.hint_char2({
               direction = require'hop.hint'.HintDirection.BEFORE_CURSOR,
-              current_line_only = true
+              current_line_only = false
             })
           end
         '';
@@ -333,9 +333,9 @@ in
         key = "t";
         action.__raw = ''
           function()
-            require'hop'.hint_char1({
+            require'hop'.hint_char2({
               direction = require'hop.hint'.HintDirection.AFTER_CURSOR,
-              current_line_only = true,
+              current_line_only = false,
               hint_offset = -1
             })
           end
@@ -346,9 +346,9 @@ in
         key = "T";
         action.__raw = ''
           function()
-            require'hop'.hint_char1({
+            require'hop'.hint_char2({
               direction = require'hop.hint'.HintDirection.BEFORE_CURSOR,
-              current_line_only = true,
+              current_line_only = false,
               hint_offset = 1
             })
           end
