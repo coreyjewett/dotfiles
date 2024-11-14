@@ -169,6 +169,7 @@ alias cz="chezmoi"
 alias czcd="exec chezmoi cd"
 alias cze="chezmoi edit -a"
 
+alias lg=lazygit
 alias g=git
 ## directly alias most git aliases from the gitconfig so we don't need the awkward 'g <alias>'.
 # get all the short alias strings and split the output into an array by newline termination
