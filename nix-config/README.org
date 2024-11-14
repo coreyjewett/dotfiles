@@ -1,0 +1,93 @@
+#+title: Corey's NixOS & Nix-Darwin System Configuration Flake
+#+description: General information about my flake and how to set it up
+
+* Contributors
+Standing on the shoulders of:
+- Matthias Benaets -- primary originator of this repo (forked on 2024-08-25, rev: 91f8006)
+- Mitchell Hashimoto -- Makefile & VMs
+- LnL7 (and all nix-darwin examples)
+- firecat53 -- disko
+
+* TODOs
+- TODO clean up / remove a lot of Matthias' docs and extra configs.
+- TODO mv nix-config/Makefile to repo root and update
+- TODO docs on how to install from NixOS LiveCD
+- TODO docs on how to install on cloud VM.
+- TODO docs on how to install on VM.
+- TODO docs on how to install on new Mac.
+
+* NixOS Installation Guide
+This flake supports multiple Linux & Darwin hosts, mixing personal & work environments. I am managing my
+[[https://github.com/coreyjewett/dotfiles.git][dotfiles]] directly using chezmoi, not home-manager.
+
+
+* Future Me Improved
+- [[https://www.reddit.com/r/neovim/comments/u0fu33/lazygit_manage_your_git_repository_inside_neovim/][lazygit in neovim]]
+- [https://evantravers.com/articles/2024/02/15/yabai-tiling-window-management-for-osx/][Yabai for focus]]
+- Add Wayland [[drag & drop support][drag & drop support]] to yazi w/ripdrop
+- https://hackernoon.com/get-the-most-out-of-your-terminal-a-comprehensive-guide-to-wezterm-configuration
+- [[https://github.com/FelixKratz/SketchyVim]]
+- [[https://superkey.app/][Superkey]] vs [[https://www.homerow.app/][HomeRow]] vs [[https://github.com/dwarvesf/VimMotionApp][VimMotionApp]]
+- https://github.com/nix-community/lorri
+
+
+* EVERYTHING BELOW HERE IS SUSPECT!!!
+
+** Darwin hosts
+1. Install Apple's devtools for basic git.
+1. (optional?) Install 1Password GUI w/ssh agent OR otherwise load up private key for fetching from github using ssh.
+1. Grab this repo:
+#+begin_src
+  # git clone https://github.com/coreyjewett/nix-config.git ~/.nix-config
+#+end_src
+1. Confirm `hostname` matches a config in darwinConfigurations.
+1. Setup:
+#+begin_src
+  # make switch
+#+end_src
+  (this will install vanilla nix, homebrew, and then the entire stack)
+1. Install chezmoi
+#+begin_src
+  # make chezmoi
+#+end_src
+
+
+** Linux hosts
+
+#+attr_org: :width 600
+[[file:rsc/Header.svg]]
+
+* Table of Content
+:PROPERTIES:
+:TOC:      :include all :depth 2 :force (depth) :ignore (this)
+:END:
+:CONTENTS:
+- [[#system-components][System Components]]
+- [[#nixos-installation-guide][NixOS Installation Guide]]
+- [[#nix-installation-guide][Nix Installation Guide]]
+- [[#nix-darwin-installation-guide][Nix-Darwin Installation Guide]]
+- [[#guides][Guides]]
+- [[#faq][FAQ]]
+:END:
+
+* System Components
+|                 | *NixOS - Wayland* | *NixOS - Wayland/Xorg* | *NixOS - Xorg*   | *Darwin*                |
+|-----------------+-------------------+------------------------+------------------+-------------------------|
+| *DM*            | /                 | GDM                    | LightDM          | /                       |
+| *WM/DE*         | Hyprland          | Gnome                  | Bspwm            | Raycast                 |
+| *Compositor*    | Hyprland          | Mutter                 | Picom (jonaburg) | /                       |
+| *Bar*           | Eww + Waybar      | /                      | Polybar          | /                       |
+| *Hotkeys*       | Hyprland          | /                      | Sxhkd            | Raycast                 |
+| *Launcher*      | Wofi              | Gnome                  | Rofi             | Raycast                 |
+| *GTK Theme*     | Orchis-Dark       | Adwaita                | Orchis-Dark      | /                       |
+| *Notifications* | Swaync            | Gnome                  | Dunst            | /                       |
+| *Terminal*      | Kitty             | Kitty                  | Kitty            | Kitty                   |
+| *Used by host*  | Beelink, XPS      | Work                   | VM & Probook     | MacBook{Intel or AirM1} |
+
+There are some other desktop environments/window manager (See NixOS - Other). Just link to correct ~default/home.nix~ in ~./hosts/<host>/default and home.nix~.
+There is also a general Nix config with hostname ~pacman~ that can be used on pretty much any disto.
+
+Components relevant to all hosts:
+| *Shell*    | Zsh    |
+| *Terminal* | Kitty  |
+| *Editors*  | Neovim |
