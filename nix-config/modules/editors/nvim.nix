@@ -306,7 +306,7 @@ in
 
       # hop keymaps (https://github.com/smoka7/hop.nvim/wiki/Commands)
       {
-        key = "f";
+        key = "gf";
         action.__raw = ''
           function()
             require'hop'.hint_char2({
@@ -315,10 +315,11 @@ in
             })
           end
         '';
-        options.remap = true;
+        options.desc = "HopChar2 » (incl)";
+        # options.group = "hops";
       }
       {
-        key = "F";
+        key = "gF";
         action.__raw = ''
           function()
             require'hop'.hint_char2({
@@ -327,10 +328,11 @@ in
             })
           end
         '';
-        options.remap = true;
+        options.desc = "HopChar2 « (incl)";
+        # options.group = "hops";
       }
       {
-        key = "t";
+        key = "gt";
         action.__raw = ''
           function()
             require'hop'.hint_char2({
@@ -340,10 +342,11 @@ in
             })
           end
         '';
-        options.remap = true;
+        options.desc = "HopChar2 » (excl)";
+        # options.group = "hops";
       }
       {
-        key = "T";
+        key = "gT";
         action.__raw = ''
           function()
             require'hop'.hint_char2({
@@ -353,7 +356,66 @@ in
             })
           end
         '';
-        options.remap = true;
+        options.desc = "HopChar2 « (excl)";
+        # options.group = "hops";
+      }
+      {
+        key = "g/";
+        action.__raw = ''
+          function()
+            require'hop'.hint_patterns({ })
+          end
+        '';
+        options.desc = "Hop Search ⇕";
+        # options.group = "hops";
+      }
+      {
+        key = "gw";
+        action.__raw = ''
+          function()
+            require'hop'.hint_words({
+              direction = require'hop.hint'.HintDirection.AFTER_CURSOR,
+            })
+          end
+        '';
+        options.desc = "Hop Word ꜜ";
+        # options.group = "hops";
+      }
+      {
+        key = "gW";
+        action.__raw = ''
+          function()
+            require'hop'.hint_words({
+              direction = require'hop.hint'.HintDirection.AFTER_CURSOR,
+            })
+          end
+        '';
+        options.desc = "Hop Word ꜛ";
+        # options.group = "hops";
+      }
+      {
+        key = "gj";
+        action.__raw = ''
+          function()
+            require'hop'.hint_lines({
+              direction = require'hop.hint'.HintDirection.AFTER_CURSOR,
+            })
+          end
+        '';
+        options.desc = "Hop Line ꜜ";
+        # options.group = "hops";
+      }
+      {
+        key = "gk";
+        action.__raw = ''
+          function()
+            require'hop'.hint_lines({
+              direction = require'hop.hint'.HintDirection.BEFORE_CURSOR,
+            })
+          end
+        '';
+        options.desc = "Hop Line ꜛ";
+        # options.group = "hops";
       }
     ];
 
@@ -746,11 +808,14 @@ in
       };
       spider = {
         enable = true;
-        keymaps.motions = {
-          w = "w";
-          e = "e";
-          b = "b";
-          ge = "ge";
+        keymaps = {
+          motions = {
+            w = "w";
+            e = "e";
+            b = "b";
+            ge = "ge";
+          };
+          silent = true;
         };
       };
     };
