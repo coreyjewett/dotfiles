@@ -195,6 +195,11 @@ function y() {
 	fi
 	rm -f -- "$tmp"
 }
+# zsh4humans unsets these when it uses tmux internally. Doing so causes inline image
+# display to break for `wezterm imgcat` and `yazi`. Setting them may cause some other
+# chaos... worth it?
+export TMUX=$_Z4H_TMUX
+export TMUX_PANE=$_Z4H_TMUX_PANE
 
 # Set shell options: http://zsh.sourceforge.net/Doc/Release/Options.html.
 #setopt glob_dots     # no special treatment for file names with a leading dot
