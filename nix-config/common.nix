@@ -28,6 +28,7 @@
       fzf
       gawk
       gettext
+      gh # github cli
       gnupg
       gnutar
       hexyl
