@@ -251,12 +251,35 @@ in
         action = "<C-\\><C-n>";
         options.desc = "Exit terminal mode";
       }
+
+      # Copilot
       {
         mode = [ "n" "v" ];
-        key = "<leader>@";
+        key = "<leader>cc";
         action = "<CMD>CopilotChat<CR>";
         options.desc = "Copilot Chat";
       }
+      {
+        mode = [ "n" "v" ];
+        key = "<leader>ch";
+        action.__raw = /* lua */ ''
+          function()
+            require("CopilotChat.integrations.telescope").pick(require("CopilotChat.actions").help_actions())
+          end
+        '';
+        options.desc = "Copilot Helps";
+      }
+      {
+        mode = [ "n" "v" ];
+        key = "<leader>cp";
+        action.__raw = /* lua */ ''
+          function()
+            require("CopilotChat.integrations.telescope").pick(require("CopilotChat.actions").prompt_actions())
+          end
+        '';
+        options.desc = "Copilot Prompts";
+      }
+
       {
         key = "<leader>g";
         action = "<cmd>lua _lazygit_toggle()<CR>";
@@ -453,7 +476,31 @@ in
     ];
 
     plugins = {
-      copilot-chat.enable = true;
+      copilot-chat = {
+        enable = true;
+        settings = {
+          answer_header = "## Copilot ";
+          auto_follow_cursor = false;
+          error_header = "## Error ";
+          mappings = {
+            close = {
+              insert = "<C-c>";
+              normal = "q";
+            };
+            complete = {
+              detail = "Use @<Tab> or /<Tab> for options.";
+              insert = "<Tab>";
+            };
+          };
+          window = {
+            layout = "float";
+            width = 0.8;
+            height = 0.4;
+            border = "rounded";
+            relative = "cursor";
+          };
+        };
+      };
       copilot-lua = {
         enable = true;
         # turn off per copilot-cmp
