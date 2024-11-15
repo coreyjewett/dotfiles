@@ -238,6 +238,7 @@ in
         action = "z=";
         options.desc = "Get spell suggestion";
       }
+
       {
         mode = "n";
         key = "\\\\";
@@ -256,6 +257,12 @@ in
         action = "<CMD>CopilotChat<CR>";
         options.desc = "Copilot Chat";
       }
+      {
+        key = "<leader>g";
+        action = "<cmd>lua _lazygit_toggle()<CR>";
+        options.desc = "Lazygit";
+      }
+
       # TODO: lots more good stuff for file open https://vi.stackexchange.com/a/3369
       {
         mode = "n";
@@ -822,6 +829,7 @@ in
           ];
         };
       };
+      lazygit.enable = true;
       toggleterm = {
         enable = true;
         settings = {
@@ -952,6 +960,35 @@ in
       vim.o.runtimepath = vim.o.runtimepath .. ',~/.local/share/nvim/site' -- set spellfile path
 
       vim.opt.fillchars:append({ eob = " " })
+
+      -- LazyGit
+      local Terminal  = require('toggleterm.terminal').Terminal
+      local lazygit = Terminal:new({
+        cmd = "lazygit",
+        dir = "git_dir",
+        direction = "float",
+        float_opts = {
+          border = "double",
+          --width = 0.9,
+          --height = 0.9,
+        },
+       -- function to run on opening the terminal
+        on_open = function(term)
+          vim.cmd("startinsert!")
+          vim.api.nvim_buf_set_keymap(0, "t", '<esc>', "<cmd>close<CR>", {silent = false, noremap = true})
+          if vim.fn.mapcheck("<esc>", "t") ~= "" then
+            vim.api.nvim_buf_del_keymap(term.bufnr, "t", "<esc>")
+          end
+        end,
+        -- function to run on closing the terminal
+        on_close = function(term)
+          vim.cmd("startinsert!")
+        end,
+       })
+
+      function _lazygit_toggle()
+        lazygit:toggle()
+      end
     '';
   };
 }
