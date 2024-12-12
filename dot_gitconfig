@@ -63,11 +63,12 @@
   please = push --force-with-lease
 
   # rebase
+  rb = rebase                       # rebase
   rc = rebase --continue            # continue rebase
   rs = rebase --skip                # skip rebase
 
   # remote
-  r = remote -v                     # show remotes (verbose)
+  rl = remote -v                    # show remotes (verbose)
 
   # reset
   unstage = reset HEAD              # remove files from index (tracking)
@@ -76,10 +77,9 @@
   mt = mergetool                    # fire up the merge tool
 
   # stash
-  ss = stash                        # stash changes
+  ss = stash push                   # stash changes
   sl = stash list                   # list stashes
   sp = stash pop                    # pop stash (restore changes; remove stash)
-  ; sa = stash apply                  # apply stash (restore changes; keep stash)
   sd = stash drop                   # drop stashes (destory changes)
 
   # status
