@@ -14,7 +14,7 @@ zstyle ':z4h:' auto-update-days '28'
 zstyle ':z4h:bindkey' keyboard  'mac'
 
 # start tmux.
-# zstyle ':z4h:' start-tmux       no
+zstyle ':z4h:' start-tmux       'integrated'
 # Move prompt to the bottom when zsh starts and on Ctrl+L.
 zstyle ':z4h:' prompt-at-bottom 'yes'
 alias clear=z4h-clear-screen-soft-bottom
@@ -79,6 +79,9 @@ bindkey -v
   # Move cursor one line down or fetch the next command from LOCAL history.
   bindkey   '^N'    z4h-down-substring-local       # ctrl+n
   bindkey   '^[[B'  z4h-down-substring-local       # down
+
+# when the first character on the line is a space, don't store command line in the history
+setopt HIST_IGNORE_SPACE
 
 ### Extend PATH.
 # vanilla PATH adds
@@ -196,11 +199,11 @@ function y() {
 	fi
 	rm -f -- "$tmp"
 }
-# zsh4humans unsets these when it uses tmux internally. Doing so causes inline image
+# zsh4humans unsets these when it uses tmux internally (start-tmux no). Doing so causes inline image
 # display to break for `wezterm imgcat` and `yazi`. Setting them may cause some other
 # chaos... worth it?
-export TMUX=$_Z4H_TMUX
-export TMUX_PANE=$_Z4H_TMUX_PANE
+#export TMUX=$_Z4H_TMUX
+#export TMUX_PANE=$_Z4H_TMUX_PANE
 
 # completion for diff is broken (something in omzsh?)
 unalias diff;

@@ -43,6 +43,7 @@
       ripgrep
       rsync
       shellcheck
+      tmux
       yq-go
     ];
   };
