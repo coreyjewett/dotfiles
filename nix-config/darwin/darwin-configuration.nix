@@ -99,8 +99,9 @@
       "finicky" # url manager
       "karabiner-elements"
       "maccy" # clipboard manager
+      "mos"
       # "blurred" # [blur unfocused apps](https://github.com/dwarvesf/Blurred)
-      "jordanbaird-ice" # [menu bar mgmt](https://github.com/dwarvesf/hidden)
+      # "jordanbaird-ice" # [menu bar mgmt](https://github.com/dwarvesf/hidden)
 
       # audio / video
       "spotify"
