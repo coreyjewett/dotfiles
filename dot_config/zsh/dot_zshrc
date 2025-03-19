@@ -168,6 +168,9 @@ eval "$(/run/current-system/sw/bin/mise activate zsh)"
 export VOLTA_HOME="$HOME/.volta";
 path=("$VOLTA_HOME/bin" $path);
 
+# SSL Inspection injection
+export NODE_EXTRA_CA_CERTS=~/.local/share/ZScalerRootCA.pem
+
 # Define aliases.
 alias tree='tree -a -I .git'
 alias rmrf='rm -rf'
