@@ -105,7 +105,7 @@
 [merge]
   summary = true
   verbosity = 1
-  tool = vimdiff
+	tool = meld
 [apply]
   whitespace = nowarn
 [branch]
@@ -153,3 +153,7 @@
   path = .gitconfig.user
 [piece]
 	branch-prefix = personal/cjewett/
+# https://stackoverflow.com/a/34119867
+[mergetool "meld"]
+  cmd = meld \"$LOCAL\" \"$MERGED\" \"$REMOTE\" --output \"$MERGED\"
+  keepbackup=false
