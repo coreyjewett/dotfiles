@@ -164,6 +164,10 @@ compdef _directories md
 # activate mise
 eval "$(/run/current-system/sw/bin/mise activate zsh)"
 
+# activate volta
+export VOLTA_HOME="$HOME/.volta";
+path=("$VOLTA_HOME/bin" $path);
+
 # Define aliases.
 alias tree='tree -a -I .git'
 alias rmrf='rm -rf'
