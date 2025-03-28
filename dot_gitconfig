@@ -158,3 +158,5 @@
 [mergetool "meld"]
   cmd = meld \"$LOCAL\" \"$MERGED\" \"$REMOTE\" --output \"$MERGED\"
   keepbackup=false
+[rebase]
+  updateRefs = true
