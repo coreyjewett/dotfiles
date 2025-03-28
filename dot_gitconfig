@@ -55,20 +55,23 @@
   shortnocolor = log --pretty=format:\"%h %cr %cn %s\"
 
   # pull
-  pl = pull                         # pull
+  p = pull                         # pull
   ff = pull --ff-only
 
+  # fetch
+  f = fetch
+
   # push
-  pu = push                         # push
+  P = push                         # push
   please = push --force-with-lease
 
   # rebase
   rb = rebase                       # rebase
-  rc = rebase --continue            # continue rebase
-  rs = rebase --skip                # skip rebase
+  rbc = rebase --continue            # continue rebase
+  rbs = rebase --skip                # skip rebase
 
   # remote
-  rl = remote -v                    # show remotes (verbose)
+  R = remote -v                    # show remotes (verbose)
 
   # reset
   unstage = reset HEAD              # remove files from index (tracking)
@@ -84,8 +87,6 @@
 
   # status
   s = status                        # status
-  ; st = status                       # status
-  ; stat = status                     # status
 
   # tag
   t = tag -n                        # show tags with <n> lines of each tag message
