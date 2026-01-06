@@ -1,0 +1,117 @@
+;; Kanata configuration for Framework 13 laptop
+;; Karabiner-style tap/hold mappings
+
+(defcfg
+  process-unmapped-keys yes
+  danger-enable-cmd no
+  log-layer-changes no
+
+  ;; Only grab laptop keyboards, ignore external USB keyboards
+  linux-dev-names-include (
+    "AT Translated Set 2 keyboard"
+    "FRMW0001:00 32AC:0006"
+  )
+)
+
+(defsrc
+  caps
+  lsft rsft
+  lctl rctl
+  lalt ralt
+  lmet rmet
+  ret
+  1 2 3 4 5 6 7 8 9 0 - =
+  q w e r t    y u i o p [ ]
+  a s d f g    h j k l ;
+  z x c v b    n m , . /
+  spc
+)
+
+(deflayer base
+  @cap  ;; Caps Lock: tap=ESC, hold=CTRL
+  XX XX  ;; Block physical Shift keys
+  XX XX  ;; Block physical Ctrl keys
+  XX XX  ;; Block physical Alt keys
+  XX XX  ;; Block physical Meta/Super keys
+  @ent  ;; Enter: tap=Enter, hold=CTRL
+  @1 @2 @3 @4 @5 @6 @7 @8 @9 @0 @min @eql
+  @q @w @e @r @t    @y @u @i @o @p @lbrc @rbrc
+  @ha @hs @hd @hf @g    @h @hj @hk @hl @hscln  ;; HOMEROW MODS ACTIVE
+  @z @x @c @v @b    @n @m @comm @dot @slsh
+  @spc  ;; Space: tap=space, hold=numbers layer
+)
+
+(deflayer lshift
+  _  ;; caps
+  XX XX  ;; shifts blocked
+  _ _  ;; ctrl pass through (blocked in base)
+  _ _  ;; alt pass through (blocked in base)
+  _ _  ;; meta pass through (blocked in base)
+  _  ;; enter
+  ;; Left-hand numbers unshifted, right-hand numbers shifted
+  1 2 3 4 5 6 S-7 S-8 S-9 S-0 S-- S-=
+  ;; Left-hand keys: output lowercase (blocks shift behavior)
+  q w e r t    S-y S-u S-i S-o S-p S-[ S-]
+  a s d f g    S-h S-j S-k S-l S-;
+  z x c v b    S-n S-m S-, S-. S-/
+  _  ;; space
+)
+
+(deflayer numbers
+  _  ;; caps
+  XX XX  ;; shifts blocked
+  _ _  ;; ctrl
+  _ _  ;; alt
+  _ _  ;; meta
+  _  ;; enter
+  _  _  _  _  _  _  _  _  _  _  _  _  ;; number row passes through
+  1  2  3  4  5     6  7  8  9  0  -  =  ;; qwertyuiop[] → 1234567890-=
+  a  s  d  f  _     _  j  k  l  _      ;; home row: plain letters (disables mods in this layer)
+  _  _  _  _  _     _  _  _  _  _      ;; bottom row transparent
+  _  ;; space transparent
+)
+
+;; Aliases for tap-hold behavior
+(defalias
+  ;; Caps Lock: tap ESC, hold left control
+  cap (tap-hold 200 200 esc lctl)
+
+  ;; Enter: tap Enter, hold right control
+  ent (tap-hold 200 200 ret rctl)
+
+  ;; Left Shift: tap (, hold activates lshift layer (blocks left-hand keys)
+  lsf (tap-hold-press 200 200 S-9 (layer-while-held lshift))
+
+  ;; Right Shift: tap ), hold shift (works normally with all keys)
+  rsf (tap-hold-press 200 200 S-0 rsft)
+
+  ;; Number row: just pass through normally on base layer
+  1 1  2 2  3 3  4 4  5 5  6 6
+  7 7  8 8  9 9  0 0  min -  eql =
+
+  ;; Left-hand keys: just pass through normally on base layer
+  q q  w w  e e  r r  t t
+  a a  s s  d d  f f  g g
+  z z  x x  c c  v v  b b
+
+  ;; Right-hand keys: just pass through normally on base layer
+  y y  u u  i i  o o  p p
+  h h  j j  k k  l l  scln ;
+  n n  m m  comm ,  dot .  slsh /
+  lbrc [  rbrc ]
+
+  ;; HOMEROW MODS - Left hand (bilateral: only trigger with right-hand keys)
+  ha (tap-hold-release-keys 200 200 a lmet (1 2 3 4 5 q w e r t z x c v b))
+  hs (tap-hold-release-keys 200 200 s lalt (1 2 3 4 5 q w e r t z x c v b))
+  hd (tap-hold-release-keys 200 200 d lsft (1 2 3 4 5 q w e r t z x c v b))
+  hf (tap-hold-release-keys 200 200 f lctl (1 2 3 4 5 q w e r t z x c v b))
+
+  ;; HOMEROW MODS - Right hand (bilateral: only trigger with left-hand keys)
+  hj (tap-hold-release-keys 200 200 j rctl (6 7 8 9 0 - = y u i o p n m , . / [ ]))
+  hk (tap-hold-release-keys 200 200 k rsft (6 7 8 9 0 - = y u i o p n m , . / [ ]))
+  hl (tap-hold-release-keys 200 200 l lalt (6 7 8 9 0 - = y u i o p n m , . / [ ]))
+  hscln (tap-hold-release-keys 200 200 ; rmet (6 7 8 9 0 - = y u i o p n m , . / [ ]))
+
+  ;; SPACE - Tap for space, hold for numbers layer
+  spc (tap-hold 200 150 spc (layer-while-held numbers))
+)

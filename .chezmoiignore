@@ -48,3 +48,15 @@ go
 
 # artifact of installing SketchyBar Lua
 .local/share/sketchybar_lua
+
+{{- if ne .chezmoi.os "darwin" }}
+# Ignore Mac-specific files on non-Mac systems
+.Brewfile
+.Brewfile.lock.json
+.yabairc
+.finicky.js
+.config/karabiner
+.config/sketchybar
+.config/AutoRaise
+**/*sketchybar*
+{{- end }}
