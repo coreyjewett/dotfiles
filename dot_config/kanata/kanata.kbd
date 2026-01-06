@@ -3,8 +3,8 @@
 
 (defcfg
   process-unmapped-keys yes
-  danger-enable-cmd yes
-  log-layer-changes no
+  danger-enable-cmd no
+  log-layer-changes yes
 
   ;; Only grab laptop keyboards, ignore external USB keyboards
   linux-dev-names-include (
@@ -29,10 +29,10 @@
 
 (deflayer base
   @cap  ;; Caps Lock: tap=ESC, hold=CTRL
-  @blk @blk  ;; Block physical Shift keys with beep (use homerow mods)
-  @blk @blk  ;; Block physical Ctrl keys with beep (use homerow mods)
-  f19 f19  ;; Both Alt keys send F19 (WM mode trigger) - ambidextrous!
-  @blk @blk  ;; Both Meta keys blocked with beep (use homerow mods)
+  @blk @blk  ;; Block physical Shift keys (use homerow mods)
+  @blk @blk  ;; Block physical Ctrl keys (use homerow mods)
+  @blk @blk  ;; Block physical Alt keys (use homerow mods)
+  lmet @blk  ;; Left Meta for WM mode, Right Meta blocked (use homerow mods)
   @ent  ;; Enter: tap=Enter, hold=CTRL
   @1 @2 @3 @4 @5 @6 @7 @8 @9 @0 @min @eql
   @q @w @e @r @t    @y @u @i @o @p @lbrc @rbrc
@@ -43,10 +43,10 @@
 
 (deflayer lshift
   _  ;; caps
-  @blk @blk  ;; shifts blocked with beep
-  _ _  ;; ctrl transparent (blocked in base with beep)
-  f19 f19  ;; Both Alt keys still send F19
-  _ _  ;; Meta keys transparent (blocked in base with beep)
+  @blk @blk  ;; shifts blocked
+  _ _  ;; ctrl transparent (blocked in base)
+  _ _  ;; alt transparent (blocked in base)
+  _ _  ;; meta transparent (lmet for WM, rmet blocked in base)
   _  ;; enter
   ;; Left-hand numbers unshifted, right-hand numbers shifted
   1 2 3 4 5 6 S-7 S-8 S-9 S-0 S-- S-=
@@ -59,10 +59,10 @@
 
 (deflayer numbers
   _  ;; caps
-  @blk @blk  ;; shifts blocked with beep
-  _ _  ;; ctrl transparent (blocked in base with beep)
-  f19 f19  ;; Both Alt keys still send F19
-  _ _  ;; Meta keys transparent (blocked in base with beep)
+  @blk @blk  ;; shifts blocked
+  _ _  ;; ctrl transparent (blocked in base)
+  _ _  ;; alt transparent (blocked in base)
+  _ _  ;; meta transparent (lmet for WM, rmet blocked in base)
   _  ;; enter
   _  _  _  _  _  _  _  _  _  _  _  _  ;; number row passes through
   1  2  3  4  5     6  7  8  9  0  -  =  ;; qwertyuiop[] → 1234567890-=
@@ -115,6 +115,6 @@
   ;; SPACE - Tap for space, hold for numbers layer
   spc (tap-hold 200 150 spc (layer-while-held numbers))
 
-  ;; Block key with audible feedback (beep) to train away from physical modifiers
-  blk (cmd-output-keys "paplay /usr/share/sounds/freedesktop/stereo/bell.oga")
+  ;; Block key - silently blocks (no output)
+  blk XX
 )

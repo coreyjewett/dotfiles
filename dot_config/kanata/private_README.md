@@ -89,9 +89,9 @@ This creates a vim/tmux-like modal system for window management:
 
 **Exit WM mode**: Press `Esc` or any action auto-exits
 
-### Blocked Keys (With Audible Beep)
+### Blocked Keys
 
-These keys produce a beep sound instead of their normal function to train away from using them:
+These keys are blocked (produce no output) to train away from using them:
 - Physical `Left Shift`
 - Physical `Right Shift`
 - Physical `Left Ctrl`
@@ -178,12 +178,15 @@ The left-shift layer concept allows one-handed shifted character input on the ri
 - Left `A` (Super) + right `K` (Shift) + `8` → Super+Shift+8
 - The bilateral design requires using both hands for multi-mod combos
 
-### Issue: Beeping is annoying
+### Issue: Want audible beep for blocked keys
 
-**Solution**: That's the point! It trains you away from physical modifiers. If you want to disable:
-1. Change `@blk` aliases back to `XX` in deflayer sections
-2. Set `danger-enable-cmd no` in defcfg
-3. Remove the `blk` alias definition
+**Current state**: Physical modifiers are silently blocked because the installed kanata binary doesn't support cmd execution.
+
+**Solution**: To enable audible beep feedback:
+1. Install `kanata_cmd_allowed` binary from GitHub releases, or
+2. Compile kanata with `cmd` feature: `cargo build --release --features cmd`
+3. Update the `blk` alias in kanata.kbd to: `blk (cmd-output-keys "paplay /usr/share/sounds/freedesktop/stereo/bell.oga")`
+4. Set `danger-enable-cmd yes` in defcfg
 
 ### Issue: WM mode not triggering
 
@@ -251,9 +254,10 @@ When creating QMK config for Atreus, key concepts to port:
 
 ### 2026-01-05
 - Remapped both Alt keys to F19 for ambidextrous WM mode triggering
-- Changed physical modifiers from silent block (XX) to beeping block (@blk)
-- Enabled `danger-enable-cmd yes` to allow beep command
+- Attempted to add beeping for blocked modifiers, but kanata binary lacks cmd support
+- Physical modifiers remain blocked (using @blk alias that maps to XX)
 - Documented full configuration with context for future QMK/CharaChorder/steno adaptations
+- Updated README with instructions for enabling beep if cmd-enabled kanata is installed
 
 ### Earlier (Previous Session)
 - Implemented bilateral homerow mods with `tap-hold-release-keys`
